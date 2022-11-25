@@ -32,11 +32,7 @@ module.exports = class ApplicationService {
                 app.set( 'layout extractStyles' , true );
                 app.use( expressLayouts );
         }
-        configRoutes () {
-                app.get( '/' , ( req , res ) => {
-                        res.render( 'web/home/index' , { title: ' محسن حیدری' } );
-                } );
-        }
+        configRoutes () {app.use( require( './routes/app.route' ) ); }
         configMongoDB () {
                 mongoose.connect( mongoDB , { useNewUrlParser: true , useUnifiedTopology: true } );
                 const db = mongoose.connection;
